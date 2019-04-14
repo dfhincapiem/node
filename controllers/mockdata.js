@@ -1,18 +1,4 @@
-const express = require('express');
-const app = express();
-
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-
-let data2 = [];
-
-const data = [
+var mockData = [
   {
     "id": "249942",
     "name": "Hotel Stefanos",
@@ -1415,27 +1401,4 @@ const data = [
   }
 ]
 
-
-app.get('/search', function(req, res){
-  console.log("QUERY:",req.query);
-  if (req.query.name) {
-  data2 = data.filter(val=>val.name.toLowerCase().indexOf(req.query.name.toLowerCase()) > -1);
-  res.send(data2);
-  }
-  data2 = data.filter(val=>val.stars === parseInt(req.query.stars) );
-  res.send(data2);
-
-});
-
-app.get('/', (req, res) => {
-    res.send(data);
-})
-
-
-const port = process.env.PORT || 3000;
-
-
-app.listen(port, () => {
-  console.log(`starts up at port ${port}`);
-});
-
+module.exports = mockData
