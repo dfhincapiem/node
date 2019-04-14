@@ -5,7 +5,6 @@ const data = require ('./mockdata');
 
 
 router.get('/', function(req, res){
-    console.log("QUERY:",req.query);
     if (req.query.name) {
     res.send(data.filter(val=>val.name.toLowerCase().indexOf(req.query.name.toLowerCase()) > -1));
     }
